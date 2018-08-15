@@ -8,16 +8,20 @@
     class Enemy {
         constructor(speed) {
             this.sprite = 'images/enemy-bug.png';
+            this.row = Enemy[_getRandomStoneRow]();
             this.x = Enemy[X_PIX_BUG_START];
-            this.y = Enemy[_getRandomStoneY]();
+            this.y = Enemy[_getRandomStoneY](this.row);
             this.speed = speed;
+            this.width = 101;
         }
 
         update(dt) {
-            this.x = this.x + (this.speed * dt);
-            if(this.x > window.constants.CANVAS_WIDTH) {
-                this.x = Enemy[X_PIX_BUG_START];
-                this.y = Enemy[_getRandomStoneY]();
+            if(!window.player.isGameOver()) {
+                this.x = this.x + (this.speed * dt);
+                if(this.x > window.constants.CANVAS_WIDTH) {
+                    this.x = Enemy[X_PIX_BUG_START];
+                    this.y = Enemy[_getRandomStoneY](this.row);
+                }
             }
         }
 
@@ -25,13 +29,24 @@
             window.ctx.drawImage(window.Resources.get(this.sprite), this.x, this.y);
         }
 
+        checkCollision(player) {
+            if(!player.isGameOver()) { // Don't check collision if game is already over
+                if(this.row === player.getRow() &&
+                this.x - window.constants.COLLISION_OFFSET <= player.getX() + player.getWidth() &&
+                this.x + window.constants.COLLISION_OFFSET + this.width >= player.getX()) {
+                    player.gameOver('lose');
+                    setTimeout(window.reset, 1000);
+                }
+            }
+        }
+
         static [_getRandomStoneRow]() {
             return window.util.getRandomInt(window.constants.NUM_STONE_ROWS) +
                     window.constants.NUM_WATER_ROWS;
         }
 
-        static [_getRandomStoneY]() {
-            return (this[_getRandomStoneRow]() * window.constants.ROW_PIXELS) + Enemy[Y_PIX_BUG_SELF_OFFSET];
+        static [_getRandomStoneY](row) {
+            return (row * window.constants.ROW_PIXELS) + Enemy[Y_PIX_BUG_SELF_OFFSET];
         }
     }
 

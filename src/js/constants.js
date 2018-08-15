@@ -8,7 +8,8 @@ const constants = {
     NUM_GRASS_ROWS: 2,
     Y_PLAYER_SELF_OFFSET: 10,
     CANVAS_WIDTH: 505,
-    CANVAS_HEIGHT: 606
+    CANVAS_HEIGHT: 606,
+    COLLISION_OFFSET: -40
 }
 
 window.constants = constants;

@@ -1,56 +1,111 @@
 (() => {
-    const _getRandomGrassRow = Symbol('getRandomGrassRow');
+    // Constants for private members
+    const _sprite = Symbol('_sprite');
+    const _row = Symbol('row');
+    const _col = Symbol('_col');
+    const _x = Symbol('_x');
+    const _y = Symbol('_y');
+    const _width = Symbol('_width');
+    const _height = Symbol('_height');
+    const _gameOver = Symbol('_gameOver');
+    const _status = Symbol('_status');
+
+    const _getRandomGrassRow = Symbol('getRandomGrass_row');
     const _getRandomGrassY = Symbol('getRandomGrassY');
-    const _getRandomGrassColumn = Symbol('getRandomGrassColumn');
+    const _getRandomGrassColumn = Symbol('getRandomGrass_column');
     const _getRandomGrassX = Symbol('getRandomGrassX');
 
     const Y_PIX_PLAYER_SELF_OFFSET = Symbol('Y_PIX_PLAYER_SELF_OFFSET');
 
     class Player {
         constructor() {
-            this.sprite = 'images/char-boy.png';
-            this.row = Player[_getRandomGrassRow]();
-            this.col = Player[_getRandomGrassColumn]();
-            this.x = Player[_getRandomGrassX](this.col);
-            this.y = Player[_getRandomGrassY](this.row);
+            this[_sprite] = 'images/char-boy.png';
+            this[_row] = Player[_getRandomGrassRow]();
+            this[_col] = Player[_getRandomGrassColumn]();
+            this[_x] = Player[_getRandomGrassX](this[_col]);
+            this[_y] = Player[_getRandomGrassY](this[_row]);
+            this[_width] = 101;
+            this[_height] = 171;
+            this[_gameOver] = false;
+            this[_status] = '';
         }
 
         update() {
         }
 
         render() {
-            window.ctx.drawImage(window.Resources.get(this.sprite), this.x, this.y);
+            if(this.isGameOver() && this[_status] === 'lose') {
+                if(this[_width] > 0 && this[_height] > 0) {
+                    window.ctx.drawImage(
+                        window.Resources.get(this[_sprite]),
+                        this[_x] += 5,
+                        this[_y] += 5,
+                        this[_width] -= 10,
+                        this[_height] -= 10
+                    );
+                }
+            } else {
+                window.ctx.drawImage(window.Resources.get(this[_sprite]), this[_x], this[_y]);
+            }
         }
 
         handleInput(key) {
-            switch(key) {
-            case 'left':
-                if(this.col > 0) {
-                    this.col--;
-                    this.x -= window.constants.COL_PIXELS;
+            if(!this[_gameOver]) {
+                switch(key) {
+                case 'left':
+                    if(this[_col] > 0) {
+                        this[_col]--;
+                        this[_x] -= window.constants.COL_PIXELS;
+                    }
+                    break;
+                case 'up':
+                    if(this[_row] > 0) {
+                        this[_row]--;
+                        this[_y] -= window.constants.ROW_PIXELS;
+                    }
+                    break;
+                case 'right':
+                    if(this[_col] < (window.constants.numCols - 1)) {
+                        this[_col]++;
+                        this[_x] += window.constants.COL_PIXELS;
+                    }
+                    break;
+                case 'down':
+                    if(this[_row] < (window.constants.numRows - 1)) {
+                        this[_row]++;
+                        this[_y] += window.constants.ROW_PIXELS;
+                    }
+                    break;
+                default:
+                    break;
                 }
-                break;
-            case 'up':
-                if(this.row > 0) {
-                    this.row--;
-                    this.y -= window.constants.ROW_PIXELS;
+
+                if(this.getRow() === 0) {
+                    this.gameOver('win');
+                    setTimeout(window.reset, 1000);
                 }
-                break;
-            case 'right':
-                if(this.col < (window.constants.numCols - 1)) {
-                    this.col++;
-                    this.x += window.constants.COL_PIXELS;
-                }
-                break;
-            case 'down':
-                if(this.row < (window.constants.numRows - 1)) {
-                    this.row++;
-                    this.y += window.constants.ROW_PIXELS;
-                }
-                break;
-            default:
-                break;
             }
+        }
+
+        gameOver(status) {
+            this[_gameOver] = true;
+            this[_status] = status;
+        }
+
+        isGameOver() {
+            return this[_gameOver];
+        }
+
+        getRow() {
+            return this[_row];
+        }
+
+        getWidth() {
+            return this[_width];
+        }
+
+        getX() {
+            return this[_x];
         }
 
         static [_getRandomGrassRow]() {
