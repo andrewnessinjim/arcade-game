@@ -24,8 +24,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = constants.CANVAS_WIDTH;
-    canvas.height = constants.CANVAS_HEIGHT;
+    canvas.width = window.constants.CANVAS_WIDTH;
+    canvas.height = window.constants.CANVAS_HEIGHT;
 
     doc.body.appendChild(canvas);
 
@@ -96,10 +96,10 @@ var Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function(enemy) {
+        window.allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
+        window.player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -129,8 +129,8 @@ var Engine = (function(global) {
          * and, using the rowImages array, draw the correct image for that
          * portion of the "grid"
          */
-        for (row = 0; row < constants.numRows; row++) {
-            for (col = 0; col < constants.numCols; col++) {
+        for (row = 0; row < window.constants.numRows; row++) {
+            for (col = 0; col < window.constants.numCols; col++) {
                 /* The drawImage function of the canvas' context element
                  * requires 3 parameters: the image to draw, the x coordinate
                  * to start drawing and the y coordinate to start drawing.
@@ -138,7 +138,7 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                ctx.drawImage(window.Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
 
@@ -154,9 +154,9 @@ var Engine = (function(global) {
          * the render function you have defined.
          */
 
-        player.render();
+        window.player.render();
 
-        allEnemies.forEach(function(enemy) {
+        window.allEnemies.forEach(function(enemy) {
             enemy.render();
         });
     }
@@ -173,14 +173,14 @@ var Engine = (function(global) {
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
      */
-    Resources.load([
+    window.Resources.load([
         'images/stone-block.png',
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png'
     ]);
-    Resources.onReady(init);
+    window.Resources.onReady(init);
 
     /* Assign the canvas' context object to the global variable (the window
      * object when run in a browser) so that developers can use it more easily
