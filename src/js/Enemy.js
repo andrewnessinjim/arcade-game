@@ -20,6 +20,7 @@
                 this.x = this.x + (this.speed * dt);
                 if(this.x > window.constants.CANVAS_WIDTH) {
                     this.x = Enemy[X_PIX_BUG_START];
+                    this.row = Enemy[_getRandomStoneRow]();
                     this.y = Enemy[_getRandomStoneY](this.row);
                 }
             }
