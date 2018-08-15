@@ -81,11 +81,11 @@
         "lines-around-comment": "off",
         "lines-around-directive": "error",
         "lines-between-class-members": "error",
-        "max-classes-per-file": "error",
+        "max-classes-per-file": "off",
         "max-depth": "error",
         "max-len": "off",
         "max-lines": "error",
-        "max-lines-per-function": "error",
+        "max-lines-per-function": "off",
         "max-nested-callbacks": "error",
         "max-params": "error",
         "max-statements": "off",
@@ -116,7 +116,7 @@
         "no-extend-native": "error",
         "no-extra-bind": "error",
         "no-extra-label": "error",
-        "no-extra-parens": "error",
+        "no-extra-parens": "off",
         "no-floating-decimal": "error",
         "no-implicit-coercion": "error",
         "no-implicit-globals": "off",
@@ -159,7 +159,7 @@
         "no-param-reassign": "error",
         "no-path-concat": "error",
         "no-plusplus": [
-            "error",
+            "off",
             {
                 "allowForLoopAfterthoughts": true
             }
