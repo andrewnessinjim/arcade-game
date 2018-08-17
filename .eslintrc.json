@@ -5,7 +5,8 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 2015
+        "ecmaVersion": 2015,
+        "sourceType": "module"
     },
     "rules": {
         "accessor-pairs": "error",
@@ -81,11 +82,11 @@
         "lines-around-comment": "off",
         "lines-around-directive": "error",
         "lines-between-class-members": "error",
-        "max-classes-per-file": "off",
+        "max-classes-per-file": "error",
         "max-depth": "error",
         "max-len": "off",
         "max-lines": "error",
-        "max-lines-per-function": "off",
+        "max-lines-per-function": "error",
         "max-nested-callbacks": "error",
         "max-params": "error",
         "max-statements": "off",
@@ -206,7 +207,7 @@
         "no-useless-constructor": "error",
         "no-useless-rename": "error",
         "no-useless-return": "error",
-        "no-var": "off",
+        "no-var": "error",
         "no-void": "error",
         "no-warning-comments": "error",
         "no-whitespace-before-property": "error",

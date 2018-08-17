@@ -15,13 +15,8 @@ const config = {
     },
     scripts: {
         src: [
-            './src/js/constants.js',
-            './src/js/util.js',
-            './src/js/resources.js',
-            './src/js/Enemy.js',
-            './src/js/Player.js',
-            './src/js/app.js',
-            './src/js/engine.js'
+            './src/js/**/*.js',
+            'bower_components/requirejs/require.js'
         ],
         devDest: './dev_dist/js',
         prodDest: './dist/js',
@@ -98,7 +93,6 @@ function devScripts() {
         src(config.scripts.src).
         pipe($.sourcemaps.init()).
         pipe($.babel()).
-        pipe($.concat(config.scripts.jsBundle)).
         pipe($.sourcemaps.write()).
         pipe(gulp.dest(config.scripts.devDest));
 }

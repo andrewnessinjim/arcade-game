@@ -12,4 +12,4 @@ const constants = {
     COLLISION_OFFSET: -40
 }
 
-window.constants = constants;
+export default constants;
