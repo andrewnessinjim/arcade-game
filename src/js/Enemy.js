@@ -42,7 +42,7 @@ export default class Enemy {
                 this.x - Constants.COLLISION_OFFSET <= this.player.getX() + this.player.getWidth() &&
                 this.x + Constants.COLLISION_OFFSET + this.width >= this.player.getX()) {
                 this.player.gameOver('lose');
-                setTimeout(this.reset, 1000);
+                setTimeout(this.reset.bind(undefined, 'lose'), 1000);
             }
         }
     }

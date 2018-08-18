@@ -21,11 +21,14 @@ const _getRandomGrassX = Symbol('getRandomGrassX');
 
 const Y_PIX_PLAYER_SELF_OFFSET = Symbol('Y_PIX_PLAYER_SELF_OFFSET');
 
+const INITIAL_COL = 0;
+const INITIAL_ROW = 5;
+
 export default class Player {
     constructor(reset) {
         this[_sprite] = 'images/char-boy.png';
-        this[_row] = Player[_getRandomGrassRow]();
-        this[_col] = Player[_getRandomGrassColumn]();
+        this[_row] = INITIAL_ROW;
+        this[_col] = INITIAL_COL;
         this[_x] = Player[_getRandomGrassX](this[_col]);
         this[_y] = Player[_getRandomGrassY](this[_row]);
         this[_width] = 101;
@@ -87,7 +90,7 @@ export default class Player {
 
             if(this.getRow() === 0) {
                 this.gameOver('win');
-                setTimeout(this.reset, 1000);
+                setTimeout(this.reset.bind(undefined, 'win'), 1000);
             }
         }
     }

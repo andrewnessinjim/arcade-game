@@ -6,17 +6,27 @@ import Resources from './resources';
 let player;
 let allEnemies;
 
-function reset() {
+const INITIAL_SPEED_MULTIPLIER = 1;
+let speedMultiplier;
+
+function reset(status) {
+    if(status === 'win') {
+        speedMultiplier += 0.1;
+    } else {
+        speedMultiplier = INITIAL_SPEED_MULTIPLIER;
+    }
+
     player = new Player(reset);
     allEnemies = [
-        new Enemy(400,player, reset),
-        new Enemy(300,player, reset),
-        new Enemy(200,player, reset),
-        new Enemy(100,player, reset),
-        new Enemy(50, player, reset)
+        new Enemy(400 * speedMultiplier, player, reset),
+        new Enemy(300 * speedMultiplier, player, reset),
+        new Enemy(200 * speedMultiplier, player, reset),
+        new Enemy(100 * speedMultiplier, player, reset),
+        new Enemy(50 * speedMultiplier, player, reset)
     ];
     engine.setPlayer(player);
     engine.setAllEnemies(allEnemies);
+    console.log(allEnemies);
 }
 
 reset();
