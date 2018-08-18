@@ -39,6 +39,10 @@ export default class Player {
     }
 
     update() {
+        if(this.getRow() === 0 && this[_status] !== 'win') {
+            this.gameOver('win');
+            setTimeout(this.reset.bind(undefined, 'win'), 1000);
+        }
     }
 
     render(ctx) {
@@ -88,10 +92,6 @@ export default class Player {
                 break;
             }
 
-            if(this.getRow() === 0) {
-                this.gameOver('win');
-                setTimeout(this.reset.bind(undefined, 'win'), 1000);
-            }
         }
     }
 
