@@ -16,9 +16,9 @@ body {
 .game-controls__right,
 .game-controls__down,
 .game-controls__left  {
-    width: 15vw;
-    height: 15vw;
-    font-size: 200%;
+    width: 72px;
+    height: 72px;
+    font-size: 140%;
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 20%;
@@ -48,5 +48,14 @@ body {
 @media screen and (min-height: 1200px) {
     .buttons_toggle {
         font-size: 300%;
+    }
+
+    .game-controls__up,
+    .game-controls__right,
+    .game-controls__down,
+    .game-controls__left  {
+        width: 196px;
+        height: 196px;
+        font-size: 250%;
     }
 }
