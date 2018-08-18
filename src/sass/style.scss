@@ -1,3 +1,43 @@
 body {
     text-align: center;
 }
+
+.game-controls {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-controls__up,
+.game-controls__right,
+.game-controls__down,
+.game-controls__left  {
+    width: 112px;
+    height: 112px;
+    font-size: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 20%;
+}
+
+.game-controls__up {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px
+}
+
+.buttons_toggle {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 36px;
+}
+
+.hide {
+    display: none;
+}
