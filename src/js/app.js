@@ -70,6 +70,11 @@ document.querySelector('.buttons_toggle').addEventListener('click',() => {
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
      */
+
+document.querySelector('.game-controls').addEventListener('touchend', function(e) {
+    e.preventDefault();
+    e.target.click();
+})
 Resources.load([
     'images/stone-block.png',
     'images/water-block.png',
