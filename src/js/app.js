@@ -1,10 +1,10 @@
 
 import * as engine from './engine';
+import {setPlayer, setUpPlayerMovement} from './playerMovement';
 import {Dashboard} from './Dashboard'
 import Enemy from './Enemy';
 import Player from './Player';
 import Resources from './resources';
-import setUpPlayerMovement from './playerMovement';
 
 
 let player;
@@ -37,10 +37,11 @@ function reset(status) {
     engine.setDashboard(dashboard);
 
     console.table(allEnemies);
-    setUpPlayerMovement(player);
+    setPlayer(player);
 }
 
 reset();
+setUpPlayerMovement();
 
 /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
