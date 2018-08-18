@@ -26,7 +26,8 @@ const doc = document,
     ctx = canvas.getContext('2d');
 let lastTime,
     _player,
-    _allEnemies;
+    _allEnemies,
+    _dashboard;
 
 canvas.setAttribute('id','canvas');
 
@@ -141,6 +142,7 @@ function render() {
     }
 
     renderEntities();
+    renderDashboard();
 }
 
 /* This function is called by the render function and is called on each game
@@ -159,6 +161,9 @@ function renderEntities() {
     });
 }
 
+function renderDashboard() {
+    _dashboard.render(ctx);
+}
 /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
      * game loop.
@@ -174,4 +179,8 @@ export function setPlayer(player) {
 
 export function setAllEnemies(allEnemies) {
     _allEnemies = allEnemies;
+}
+
+export function setDashboard(dashboard) {
+    _dashboard = dashboard;
 }

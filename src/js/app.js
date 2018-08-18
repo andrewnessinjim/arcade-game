@@ -1,10 +1,14 @@
+
 import * as engine from './engine';
+import { Dashboard } from './Dashboard'
 import Enemy from './Enemy';
 import Player from './Player';
 import Resources from './resources';
 
+
 let player;
 let allEnemies;
+const dashboard = new Dashboard(0);
 
 const INITIAL_SPEED_MULTIPLIER = 1;
 let speedMultiplier;
@@ -12,8 +16,10 @@ let speedMultiplier;
 function reset(status) {
     if(status === 'win') {
         speedMultiplier += 0.1;
+        dashboard.level += 1;
     } else {
         speedMultiplier = INITIAL_SPEED_MULTIPLIER;
+        dashboard.level = 0;
     }
 
     player = new Player(reset);
@@ -24,8 +30,10 @@ function reset(status) {
         new Enemy(100 * speedMultiplier, player, reset),
         new Enemy(50 * speedMultiplier, player, reset)
     ];
+
     engine.setPlayer(player);
     engine.setAllEnemies(allEnemies);
+    engine.setDashboard(dashboard);
 
     console.table(allEnemies);
 }
