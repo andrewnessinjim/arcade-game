@@ -1,6 +1,6 @@
 
 import * as engine from './engine';
-import { Dashboard } from './Dashboard'
+import {Dashboard} from './Dashboard'
 import Enemy from './Enemy';
 import Player from './Player';
 import Resources from './resources';
