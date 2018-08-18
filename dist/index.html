@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>Effective JavaScript: Frogger</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div class="placeholder">
-        I am just a placeholder. Remove me and add your content.
-    </div>
+    <section class="game-controls">
+        <div class="game-controls__navContainer hide">
+            <button class="game-controls__up">Up</button>
+            <button class="game-controls__left">Left</button>
+            <button class="game-controls__down">Down</button>
+            <button class="game-controls__right">Right</button>
+        </div>
+        <button class="buttons_toggle">On Screen Keys</button>
+    </section>
+    <script src="./js/require.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+        requirejs(["app"]);
+    </script>
 </body>
 </html>
