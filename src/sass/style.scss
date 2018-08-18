@@ -16,12 +16,13 @@ body {
 .game-controls__right,
 .game-controls__down,
 .game-controls__left  {
-    width: 112px;
-    height: 112px;
-    font-size: 36px;
+    width: 10vw;
+    height: 10vw;
+    font-size: 100%;
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 20%;
+    opacity: 0.8;
 }
 
 .game-controls__up {
@@ -35,7 +36,7 @@ body {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    font-size: 36px;
+    font-size: 100%;
 }
 
 .hide {
