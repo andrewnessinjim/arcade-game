@@ -38,6 +38,9 @@ export default class Player {
         this.reset = reset;
     }
 
+    update() {
+    }
+
     render(ctx) {
         if(this.isGameOver() && this[_status] === 'lose') {
             if(this[_width] > 0 && this[_height] > 0) {
