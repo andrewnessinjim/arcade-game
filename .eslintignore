@@ -3,3 +3,4 @@ dev_dist
 dist
 gulpfile.js
 bower_components
+src/js/config.js

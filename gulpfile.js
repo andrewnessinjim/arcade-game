@@ -100,8 +100,8 @@ function devScripts() {
 function prodScripts() {
     return gulp.
         src(config.scripts.src).
+        pipe($.removeLogging()).
         pipe($.babel()).
-        pipe($.concat(config.scripts.jsBundle)).
         pipe(gulp.dest(config.scripts.prodDest));
 }
 

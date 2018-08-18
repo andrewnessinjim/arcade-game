@@ -6,6 +6,7 @@
     "transform-es2015-modules-amd"
   ],
   "ignore": [
-    "bower_components/**/*js"
+    "bower_components/**/*js",
+    "src/js/config.js"
   ]
 }

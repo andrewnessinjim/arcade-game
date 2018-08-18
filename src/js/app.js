@@ -26,7 +26,8 @@ function reset(status) {
     ];
     engine.setPlayer(player);
     engine.setAllEnemies(allEnemies);
-    console.log(allEnemies);
+
+    console.table(allEnemies);
 }
 
 reset();
