@@ -31,8 +31,14 @@ let lastTime,
 
 canvas.setAttribute('id','canvas');
 
-canvas.width = Constants.CANVAS_WIDTH;
-canvas.height = Constants.CANVAS_HEIGHT;
+if(window.devicePixelRatio < 1.5) {
+    canvas.width = Constants.CANVAS_WIDTH;
+    canvas.height = Constants.CANVAS_HEIGHT;
+} else {
+    canvas.width = Constants.CANVAS_WIDTH * 1.5;
+    canvas.height = Constants.CANVAS_HEIGHT * 1.5;
+    ctx.scale(1.5,1.5);
+}
 doc.body.appendChild(canvas);
 
 /* This function serves as the kickoff point for the game loop itself
