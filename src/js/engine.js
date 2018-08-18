@@ -127,8 +127,8 @@ function render() {
         * and, using the rowImages array, draw the correct image for that
         * portion of the "grid"
         */
-    for (row = 0; row < Constants.numRows; row++) {
-        for (col = 0; col < Constants.numCols; col++) {
+    for (row = 0; row < Constants.TOTAL_ROWS; row++) {
+        for (col = 0; col < Constants.TOTAL_COLS; col++) {
             /* The drawImage function of the canvas' context element
                 * requires 3 parameters: the image to draw, the x coordinate
                 * to start drawing and the y coordinate to start drawing.

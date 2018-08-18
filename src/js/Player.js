@@ -70,13 +70,13 @@ export default class Player {
                 }
                 break;
             case 'right':
-                if(this[_col] < (Constants.numCols - 1)) {
+                if(this[_col] < (Constants.TOTAL_COLS - 1)) {
                     this[_col]++;
                     this[_x] += Constants.COL_PIXELS;
                 }
                 break;
             case 'down':
-                if(this[_row] < (Constants.numRows - 1)) {
+                if(this[_row] < (Constants.TOTAL_ROWS - 1)) {
                     this[_row]++;
                     this[_y] += Constants.ROW_PIXELS;
                 }
@@ -125,7 +125,7 @@ export default class Player {
     }
 
     static [_getRandomGrassColumn]() {
-        return Util.getRandomInt(Constants.numCols);
+        return Util.getRandomInt(Constants.TOTAL_COLS);
     }
 
     static [_getRandomGrassX](col) {

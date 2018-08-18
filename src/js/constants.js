@@ -1,6 +1,6 @@
 const constants = {
-    numRows: 6,
-    numCols: 5,
+    TOTAL_ROWS: 6,
+    TOTAL_COLS: 5,
     ROW_PIXELS: 83,
     COL_PIXELS: 101,
     NUM_STONE_ROWS: 3,
