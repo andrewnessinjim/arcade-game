@@ -4,6 +4,7 @@ import {Dashboard} from './Dashboard'
 import Enemy from './Enemy';
 import Player from './Player';
 import Resources from './resources';
+import setUpPlayerMovement from './playerMovement';
 
 
 let player;
@@ -36,45 +37,15 @@ function reset(status) {
     engine.setDashboard(dashboard);
 
     console.table(allEnemies);
+    setUpPlayerMovement(player);
 }
 
 reset();
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
-    const allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
 
-    player.handleInput(allowedKeys[e.keyCode]);
-});
-
-attachTouchNavigationListener('.game-controls__up', 'up');
-attachTouchNavigationListener('.game-controls__right', 'right');
-attachTouchNavigationListener('.game-controls__down', 'down');
-attachTouchNavigationListener('.game-controls__left', 'left');
-
-function attachTouchNavigationListener(elementName, direction) {
-    document.querySelector(elementName).addEventListener('click', () => {
-        player.handleInput(direction);
-    })
-}
-
-document.querySelector('.buttons_toggle').addEventListener('click',() => {
-    document.querySelector('.game-controls__navContainer').classList.toggle('hide');
-});
 /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
      */
-
-document.querySelector('.game-controls').addEventListener('touchend', function(e) {
-    e.preventDefault();
-    e.target.click();
-})
 Resources.load([
     'images/stone-block.png',
     'images/water-block.png',
