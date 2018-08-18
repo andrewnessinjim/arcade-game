@@ -7,6 +7,7 @@
   ],
   "ignore": [
     "bower_components/**/*js",
-    "src/js/config.js"
+    "src/js/dev/config.js",
+    "src/js/prod/config.js"
   ]
 }

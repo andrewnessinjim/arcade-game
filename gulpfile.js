@@ -15,7 +15,7 @@ const config = {
     },
     scripts: {
         src: [
-            './src/js/**/*.js',
+            './src/js/*.js',
             'bower_components/requirejs/require.js'
         ],
         devDest: './dev_dist/js',
@@ -89,8 +89,10 @@ function prodStyles() {
 }
 
 function devScripts() {
+    const src = config.scripts.src;
+    src.push('./src/js/dev/*js')
     return gulp.
-        src(config.scripts.src).
+        src(src).
         pipe($.sourcemaps.init()).
         pipe($.babel()).
         pipe($.sourcemaps.write()).
@@ -98,8 +100,10 @@ function devScripts() {
 }
 
 function prodScripts() {
+    const src = config.scripts.src;
+    src.push('./src/js/prod/*js')
     return gulp.
-        src(config.scripts.src).
+        src(src).
         pipe($.removeLogging()).
         pipe($.babel()).
         pipe(gulp.dest(config.scripts.prodDest));
