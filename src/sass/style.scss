@@ -16,9 +16,9 @@ body {
 .game-controls__right,
 .game-controls__down,
 .game-controls__left  {
-    width: 10vw;
-    height: 10vw;
-    font-size: 100%;
+    width: 15vw;
+    height: 15vw;
+    font-size: 200%;
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 20%;
@@ -33,12 +33,20 @@ body {
 
 .buttons_toggle {
     margin-top: 10px;
-    width: 100%;
+    width: 30%;
     padding: 10px;
     box-sizing: border-box;
-    font-size: 100%;
+    font-size: 150%;
+    opacity: 0.75;
+    border-radius: 10%;
 }
 
 .hide {
     display: none;
+}
+
+@media screen and (min-height: 1200px) {
+    .buttons_toggle {
+        font-size: 300%;
+    }
 }
