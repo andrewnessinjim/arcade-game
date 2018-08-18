@@ -1,5 +1,5 @@
 
 
 requirejs.config({
-    baseUrl: '/dist/js'
+    baseUrl: '/arcade-game/dist/js'
 });
