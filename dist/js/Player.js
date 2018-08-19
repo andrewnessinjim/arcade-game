@@ -88,8 +88,11 @@ define(['exports', './util', './constants', './resources'], function (exports, _
             this[_col] = INITIAL_COL;
             this[_x] = Player[_getRandomGrassX](this[_col]);
             this[_y] = Player[_getRandomGrassY](this[_row]);
+
+            // This is the width and height of the PNG files used
             this[_width] = 101;
             this[_height] = 171;
+
             this[_gameOver] = false;
             this[_status] = '';
             this.reset = reset;
@@ -97,11 +100,17 @@ define(['exports', './util', './constants', './resources'], function (exports, _
 
         _createClass(Player, [{
             key: 'update',
-            value: function update() {}
+            value: function update() {
+                if (this.getRow() === 0 && this[_status] !== 'win') {
+                    this.gameOver('win');
+                    setTimeout(this.reset.bind(undefined, 'win'), 1000);
+                }
+            }
         }, {
             key: 'render',
             value: function render(ctx) {
                 if (this.isGameOver() && this[_status] === 'lose') {
+                    // Shrink the player when the game is over. This adds to the visual feedback.
                     if (this[_width] > 0 && this[_height] > 0) {
                         ctx.drawImage(_resources2.default.get(this[_sprite]), this[_x] += 5, this[_y] += 5, this[_width] -= 10, this[_height] -= 10);
                     }
@@ -112,6 +121,7 @@ define(['exports', './util', './constants', './resources'], function (exports, _
         }, {
             key: 'handleInput',
             value: function handleInput(key) {
+                // Move the player only if the movement doesn't push him off the screen
                 if (!this[_gameOver]) {
                     switch (key) {
                         case 'left':
@@ -140,11 +150,6 @@ define(['exports', './util', './constants', './resources'], function (exports, _
                             break;
                         default:
                             break;
-                    }
-
-                    if (this.getRow() === 0) {
-                        this.gameOver('win');
-                        setTimeout(this.reset.bind(undefined, 'win'), 1000);
                     }
                 }
             }

@@ -1,4 +1,4 @@
-define(['./engine', './Dashboard', './Enemy', './Player', './resources'], function (_engine, _Dashboard, _Enemy, _Player, _resources) {
+define(['./engine', './playerMovement', './Dashboard', './Enemy', './Player', './resources'], function (_engine, _playerMovement, _Dashboard, _Enemy, _Player, _resources) {
     'use strict';
 
     var engine = _interopRequireWildcard(_engine);
@@ -49,50 +49,22 @@ define(['./engine', './Dashboard', './Enemy', './Player', './resources'], functi
         }
 
         player = new _Player2.default(reset);
-        allEnemies = [new _Enemy2.default(400 * speedMultiplier, player, reset), new _Enemy2.default(300 * speedMultiplier, player, reset), new _Enemy2.default(200 * speedMultiplier, player, reset), new _Enemy2.default(100 * speedMultiplier, player, reset), new _Enemy2.default(50 * speedMultiplier, player, reset)];
+        allEnemies = [new _Enemy2.default(400 * speedMultiplier, player, reset), new _Enemy2.default(250 * speedMultiplier, player, reset), new _Enemy2.default(100 * speedMultiplier, player, reset), new _Enemy2.default(70 * speedMultiplier, player, reset), new _Enemy2.default(50 * speedMultiplier, player, reset), new _Enemy2.default(10 * speedMultiplier, player, reset)];
 
         engine.setPlayer(player);
         engine.setAllEnemies(allEnemies);
         engine.setDashboard(dashboard);
+
+        (0, _playerMovement.setPlayer)(player);
     }
 
     reset();
-    // This listens for key presses and sends the keys to your
-    // Player.handleInput() method. You don't need to modify this.
-    document.addEventListener('keyup', function (e) {
-        var allowedKeys = {
-            37: 'left',
-            38: 'up',
-            39: 'right',
-            40: 'down'
-        };
+    (0, _playerMovement.setUpPlayerMovement)();
 
-        player.handleInput(allowedKeys[e.keyCode]);
-    });
-
-    attachTouchNavigationListener('.game-controls__up', 'up');
-    attachTouchNavigationListener('.game-controls__right', 'right');
-    attachTouchNavigationListener('.game-controls__down', 'down');
-    attachTouchNavigationListener('.game-controls__left', 'left');
-
-    function attachTouchNavigationListener(elementName, direction) {
-        document.querySelector(elementName).addEventListener('click', function () {
-            player.handleInput(direction);
-        });
-    }
-
-    document.querySelector('.buttons_toggle').addEventListener('click', function () {
-        document.querySelector('.game-controls__navContainer').classList.toggle('hide');
-    });
     /* Go ahead and load all of the images we know we're going to need to
          * draw our game level. Then set init as the callback method, so that when
          * all of these images are properly loaded our game will start.
          */
-
-    document.querySelector('.game-controls').addEventListener('touchend', function (e) {
-        e.preventDefault();
-        e.target.click();
-    });
     _resources2.default.load(['images/stone-block.png', 'images/water-block.png', 'images/grass-block.png', 'images/enemy-bug.png', 'images/char-boy.png']);
     _resources2.default.onReady(engine.init.bind(undefined, player, allEnemies));
 });
