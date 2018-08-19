@@ -26,10 +26,11 @@ function reset(status) {
     player = new Player(reset);
     allEnemies = [
         new Enemy(400 * speedMultiplier, player, reset),
-        new Enemy(300 * speedMultiplier, player, reset),
-        new Enemy(200 * speedMultiplier, player, reset),
+        new Enemy(250 * speedMultiplier, player, reset),
         new Enemy(100 * speedMultiplier, player, reset),
-        new Enemy(50 * speedMultiplier, player, reset)
+        new Enemy(70 * speedMultiplier, player, reset),
+        new Enemy(50 * speedMultiplier, player, reset),
+        new Enemy(10 * speedMultiplier, player, reset)
     ];
 
     engine.setPlayer(player);
