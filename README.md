@@ -9,6 +9,7 @@ The project is built using [gulp][2]. [Babel][3] is used to transpile the ES2015
 2) The objective of the game is to reach the water on the other side of the stone blocks, without colliding with the bugs.
 3) Use the up, right, down and left arrow keys to move the player around.
 4) You can use the "On Screen Buttons" option on the bottom left corner of the window if you're on a mobile. This will diplay the arrow keys on screen which you can use to play the game.
+5) The difficuly level will increase each time you win the game. You can see the current level you're playing in the top left corner. See how far you can go :)
 
 ## Running the game locally on your machine
 1) Clone this repository and navigate to the cloned directory on your machine. This will be the project's root directory.
