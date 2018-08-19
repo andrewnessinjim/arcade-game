@@ -23,10 +23,10 @@ define(['exports'], function (exports) {
             _player.handleInput(allowedKeys[e.keyCode]);
         });
 
-        attachTouchNavigationListener('.game-controls__up', 'up', _player);
-        attachTouchNavigationListener('.game-controls__right', 'right', _player);
-        attachTouchNavigationListener('.game-controls__down', 'down', _player);
-        attachTouchNavigationListener('.game-controls__left', 'left', _player);
+        attachTouchNavigationListener('.game-controls__up', 'up');
+        attachTouchNavigationListener('.game-controls__right', 'right');
+        attachTouchNavigationListener('.game-controls__down', 'down');
+        attachTouchNavigationListener('.game-controls__left', 'left');
 
         document.querySelector('.buttons_toggle').addEventListener('click', function () {
             document.querySelector('.game-controls__navContainer').classList.toggle('hide');
@@ -38,9 +38,9 @@ define(['exports'], function (exports) {
         });
     }
 
-    function attachTouchNavigationListener(elementName, direction, player) {
+    function attachTouchNavigationListener(elementName, direction) {
         document.querySelector(elementName).addEventListener('click', function () {
-            player.handleInput(direction);
+            _player.handleInput(direction);
         });
     }
 
