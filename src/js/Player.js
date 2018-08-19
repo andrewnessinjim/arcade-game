@@ -31,8 +31,11 @@ export default class Player {
         this[_col] = INITIAL_COL;
         this[_x] = Player[_getRandomGrassX](this[_col]);
         this[_y] = Player[_getRandomGrassY](this[_row]);
+
+        // This is the width and height of the PNG files used
         this[_width] = 101;
         this[_height] = 171;
+
         this[_gameOver] = false;
         this[_status] = '';
         this.reset = reset;
@@ -46,7 +49,7 @@ export default class Player {
     }
 
     render(ctx) {
-        if(this.isGameOver() && this[_status] === 'lose') {
+        if(this.isGameOver() && this[_status] === 'lose') { // Shrink the player when the game is over. This adds to the visual feedback.
             if(this[_width] > 0 && this[_height] > 0) {
                 ctx.drawImage(
                     Resources.get(this[_sprite]),
@@ -62,6 +65,7 @@ export default class Player {
     }
 
     handleInput(key) {
+        // Move the player only if the movement doesn't push him off the screen
         if(!this[_gameOver]) {
             switch(key) {
             case 'left':

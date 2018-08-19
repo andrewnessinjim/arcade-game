@@ -14,16 +14,19 @@ export function setUpPlayerMovement() {
         };
         _player.handleInput(allowedKeys[e.keyCode]);
     });
+
     attachTouchNavigationListener('.game-controls__up', 'up', _player);
     attachTouchNavigationListener('.game-controls__right', 'right', _player);
     attachTouchNavigationListener('.game-controls__down', 'down', _player);
     attachTouchNavigationListener('.game-controls__left', 'left', _player);
+
     document.querySelector('.buttons_toggle').addEventListener('click', () => {
         document.querySelector('.game-controls__navContainer').classList.toggle('hide');
     });
+
     document.querySelector('.game-controls').addEventListener('touchend', function (e) {
-        e.preventDefault();
-        e.target.click();
+        e.preventDefault(); // Disable double tap to zoom feature on touch screens
+        e.target.click(); // Turn it into a click event instead. This gives better control on touch screens
     });
 }
 
