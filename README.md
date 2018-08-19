@@ -1,6 +1,6 @@
 # Arcade Game - Udacity Nanodegree Project
 
-This a learning project which focuses on using ES2015 features efficiently. Check out [this course][1] if you're interesting in learning  web development.
+This is a learning project which focuses on using ES2015 features efficiently. Check out [this course][1] if you're interesting in learning  web development.
 
 The project is built using [gulp][2]. [Babel][3] is used to transpile the ES2015 code so it can work in browsers that don't support them. [RequireJS][4] is used for ES2015 modules. [Bower][5] is used to pull dependencies that run in the browser. [npm][6] is used to pull dependencies that are needed to setup the gulp pipeline for the project. [eslint][7] is setup to catch errors as you type.
 
@@ -41,6 +41,8 @@ Ready for changes
 1) Install the [eslint][10] plugin for vscode.
 2) Hit `F1` and select `ESLint:Enable ESLint`.
 3) You should now see errors being listed in the `PROBLEMS` tab and also markers in your project files when you don't conform to the rules needed by the project.
+
+Feel free to drop me an email at andrewnessinjim@yahoo.com if you're stuck anywhere or if you find the instructions insufficient :)
 
 [1]: https://in.udacity.com/course/front-end-web-developer-nanodegree--nd001
 [2]: https://gulpjs.com/
