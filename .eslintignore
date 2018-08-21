@@ -1,7 +1,6 @@
 node_modules
 dev_dist
 dist
-gulpfile.js
 bower_components
 src/js/dev/config.js
 src/js/prod/config.js

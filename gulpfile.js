@@ -1,5 +1,7 @@
+/* eslint-env node */
+
 const gulp = require('gulp');
-    $ = require('gulp-load-plugins')();
+const $ = require('gulp-load-plugins')();
 
 const config = {
     styles: {
@@ -69,7 +71,8 @@ gulp.task('prod:build', gulp.parallel(
 
 gulp.task('prod', gulp.series(
     'prod:build',
-    'prod:watch'));
+    'prod:watch'
+));
 
 function devStyles() {
     return gulp.
@@ -89,7 +92,7 @@ function prodStyles() {
 }
 
 function devScripts() {
-    const src = config.scripts.src;
+    const {src} = config.scripts;
     src.push('./src/js/dev/*js')
     return gulp.
         src(src).
@@ -100,7 +103,7 @@ function devScripts() {
 }
 
 function prodScripts() {
-    const src = config.scripts.src;
+    const {src} = config.scripts;
     src.push('./src/js/prod/*js')
     return gulp.
         src(src).
@@ -109,14 +112,14 @@ function prodScripts() {
         pipe(gulp.dest(config.scripts.prodDest));
 }
 
-function devHTML(){
+function devHTML() {
     return gulp.
         src(config.html.src).
         pipe($.htmlBeautify(config.html.beautifyOptions)).
         pipe(gulp.dest(config.html.devDest));
 }
 
-function prodHTML(){
+function prodHTML() {
     return gulp.
         src(config.html.src).
         pipe(gulp.dest(config.html.prodDest));
@@ -134,14 +137,14 @@ function prodImages() {
         pipe(gulp.dest(config.images.prodDest));
 }
 
-function devWatch(){
+function devWatch() {
     gulp.watch(config.scripts.src, gulp.series('dev:scripts'));
     gulp.watch(config.styles.src, gulp.series('dev:styles'));
     gulp.watch(config.html.src, gulp.series('dev:html'));
     gulp.watch(config.images.src, gulp.series('dev:images'));
 }
 
-function prodWatch(){
+function prodWatch() {
     gulp.watch(config.scripts.src, gulp.series('prod:scripts'));
     gulp.watch(config.styles.src, gulp.series('prod:styles'));
     gulp.watch(config.html.src, gulp.series('prod:html'));
